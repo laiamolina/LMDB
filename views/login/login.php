@@ -1,24 +1,13 @@
-<?php
-include('./login.php');
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Hola</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="/resources/login.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-</head>
-<body>
-
+<?php require './views/partials/header.php'; ?>
+<body id="login">
 <div class="contenidor"></div>
 <div class="position-relative">
   <h2 class="titol">Inici de sessió </h2>
   <hr class="linia">
   <div class="wrapper">
-      <form class="form-signin" action="/" method="POST">       
-        <p class="form-signin-heading">Inicia sessió amb el teu usuari</p>
+      <form class="form-signin" action="/login" method="POST">       
+        <p class="form-signin-heading">Inicia
+           sessió amb el teu usuari</p>
         <?php if($displayLoginincorrecte) : ?>
       <div class="alert alert-warning" role="alert">
            <a href="#" class="alert-link">Nom d'usuari o contrasenya incorrecte</a>.
@@ -33,8 +22,4 @@ include('./login.php');
       </form>
     </div>
 </div>
-</body>
-</html>
-
-
-
+<?php require './views/partials/footer.php'; ?>
