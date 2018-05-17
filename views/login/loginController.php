@@ -8,5 +8,4 @@ if($_POST){
     $displayLoginincorrecte = Usuari::login($_POST['username'], $_POST['password']);
 }
 
-
 require("login.php");
