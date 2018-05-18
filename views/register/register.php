@@ -7,6 +7,11 @@
   <div class="wrapper">
       <form class="form-signin" action="/register" method="POST">       
         <h5 class="form-signin-heading plogin">Registre</h5>
+          <?php if($existeix) : ?>
+            <div class="alert alert-warning" role="alert">
+                <a href="#" class="alert-link">Ja existeix un usuari amb aquest nom, prova un altre...</a>
+            </div>
+          <?php endif; ?> 
         <input id="login_username" type="text" class="form-control" name="username" placeholder="Nom Usuari" required="" autofocus="" /><br>
         <input id="login_password" type="password" class="form-control" name="password" placeholder="Contrasenya" required=""/>      
         <label class="checkbox">
