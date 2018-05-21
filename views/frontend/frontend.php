@@ -24,13 +24,18 @@
           <a class="dropdown-item" href="#">Pitjors valorades</a>
       </li>
     </ul>
-    <form class="form-inline my-4 my-lg-0">
-      <input class="form-control mr-sm-4" type="search" placeholder="Cerca" aria-label="Search">
-      <button class="btn btn-warning my-3 my-sm-0 navright" type="submit">Cerca</button>
-    </form>
     <a href="/login" class="btn btn-warning  navright"> 
         <i class="fas fa-user"></i>
     </a>
   </div>
 </nav>
+
+<form class="form-inline my-4 my-lg-0">
+<input class="form-control mr-sm-4 cercador" type="search"  placeholder="Cerca" aria-label="Search">   
+</form>
+
+<div class="container">
+<div class="row" id="pelis"></div>
+</div>
 <?php require 'views/partials/footer.php'; ?>
+
