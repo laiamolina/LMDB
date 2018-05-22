@@ -1,34 +1,7 @@
-$(document).ready(function() {
-  var url = `https://api.themoviedb.org/3/movie/popular?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ES&page=4`;
+var url = `https://api.themoviedb.org/3/movie/popular?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=2
+`;
 
-  $.fn.extend({
-    animateCss: function(animationName, callback) {
-      var animationEnd = (function(el) {
-        var animations = {
-          animation: "animationend",
-          OAnimation: "oAnimationEnd",
-          MozAnimation: "mozAnimationEnd",
-          WebkitAnimation: "webkitAnimationEnd"
-        };
-
-        for (var t in animations) {
-          if (el.style[t] !== undefined) {
-            return animations[t];
-          }
-        }
-      })(document.createElement("div"));
-
-      this.addClass("animated " + animationName).one(animationEnd, function() {
-        $(this).removeClass("animated " + animationName);
-
-        if (typeof callback === "function") callback();
-      });
-
-      return this;
-    }
-  });
-
-  fetch(url)
+fetch(url)
     .then(function(response) {
       return response.json();
     })
@@ -39,30 +12,33 @@ $(document).ready(function() {
       Object(data.results).forEach(function(peli) {
         pelis += `
         <div class="col-md-6 titleMovie">
-        <div class="pelicula" id="pelicula${++i}">
-            <img class="imgMovie" src="https://image.tmdb.org/t/p/w200/${
-              peli.poster_path
-            }">
-            <p class="movie">${peli.title}</p>  
-            <hr>
-            <p>Vots: ${peli.vote_count}</p>
-            <p>Nota: ${peli.vote_average}</p>
+         <div class="pelicula" id="pelicula${++i}">
+            <div class="caratula col">
+                  <img class="imgMovie" src="https://image.tmdb.org/t/p/w200/${peli.poster_path}">
+                    <div class="nota">
+                      <p class="nota-m">${peli.vote_average*10}<p class="percent">%</p></p>
+                    </div>
+           </div>
+           <div class="contingut">
+              <p class="movie">${peli.title}</p>  
+              <p class="date">Estreno: ${peli.release_date}</p>
+              <hr>
+            <p class="text-s">${peli.overview.substr(0,138)}...</p>
             <p>${peli.adult ? `+18` : ``}</p>
-            <hr>
-            <p>Data d'estrena: ${peli.release_date}</p>
-            </div>
+            <div class="moreinfo">
+                <a href="#">Más info</a>
+            </div> 
+             
+           </div>
+         </div>
+
+         
+          
             
         </div>
         `;
       });
       document.getElementById("pelis").innerHTML = pelis;
-      $(".pelicula").hover(function() {
-          $(this).animateCss("flip", function() {
-          console.log("ola");
-        });
-      });
+     
     });
 
-    
-
-});
