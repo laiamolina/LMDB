@@ -36,8 +36,9 @@
 
 .titol{
     text-align: center;
-    color: white;
-    margin-top: 3%;
+    font-weight: bold;
+    font-size: 17px;
+    margin-top: 5%;
 }
 
 .linia{
@@ -71,9 +72,10 @@
 }
 
 .boto{
-    background-color: #615545; 
-    box-shadow: 10px 10px 5px black;
-    color: white;
+    background-color: white; 
+    box-shadow: 10px 10px 5px #A4A4A4;
+    color: black;
+    margin: 10px auto;
 }
 .form-control {
     position: relative;
@@ -107,9 +109,7 @@ input[type="password"] {
 }
 
 .caratula{
-    position: relative;
-    height: 300px;
-    width: 340px;
+    text-align: center;
 }
 
 .contingut{
@@ -118,14 +118,18 @@ input[type="password"] {
     position: relative;
 }
 
-.movie{
-    font-weight: bold;
-    font-size: 17px;
-}
 .imgMovie{
-    float:left;
-    height: 299px;
-    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 330px;
+    width: 226px;
+}
+.imatge{
+    display: inline-block;
+    position: relative;
+}
+.center{
+    text-align: center;
 }
 .cercador{
     position: relative;
@@ -140,6 +144,7 @@ input[type="password"] {
 
 .date{
     color: gray;
+    text-align: center;
 }
 .pelicula{
     width: 100%;
@@ -151,35 +156,34 @@ input[type="password"] {
 }
 
 .nota{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: black;
-    border:3px solid #ffc107;
-    color: white;
-    top: 2%;
     position: absolute;
-    text-align: center;
-    font-size: 12px;
-    left:81%;
+    left: 8%;
+    top: 10%;
+    text-align: right;
+    width: 52%;
 }
 
 .text-s{
     padding: 0px 10px 0px 10px;
+    text-align: center;
 }
 
 .nota-m{
-    margin-top: 3px;
-    margin-left: -6px;
+    position: absolute;
+    top: 11%;
+    left: 76%;
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    background-color: black;
+    border:3px solid #ffc107
 }
 
 .percent{
     position: absolute;
-    margin-top: 3px;
-    color: white;
-    font-size: 6px;
-    top: 28%;
-    left: 67%;
+    left: 65%;
+    font-size: 11px;
+    top: 21%;
 }
 
 .sinopsis{
@@ -187,12 +191,7 @@ input[type="password"] {
     max-height: 135px;
 }
 .moreinfo{
-    border-top: 1px solid lightgray;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    top: unset;
-    padding: 10px;
+   text-align: center;
 }
 body{
     background: url(/img/fe.jpg) no-repeat center center fixed; 
@@ -200,4 +199,14 @@ body{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+
+.list-group-item.active{
+    border:1px solid #F79256;
+    text-align: center;
+}
+
+.list-group-item{
+    text-align: center;
 }
