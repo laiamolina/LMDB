@@ -14,7 +14,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Nose</a>
       </li>
-      <li class="nav-item dropdown">
+     <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Ranking
         </a>
@@ -22,7 +22,7 @@
           <a class="dropdown-item" href="#">Més buscades</a>
           <a class="dropdown-item" href="#">Millors valorades</a>
           <a class="dropdown-item" href="#">Pitjors valorades</a>
-      </li>
+      </li>-->
     </ul>
     <a href="/login" class="btn btn-warning  navright"> 
         <i class="fas fa-user"></i>
@@ -37,17 +37,17 @@
 
 <div class="container-fluid">
   <br>
-  <h2>Películas populares</h1>
   <div class="row">
     <div class="col-lg-2 col-xs-12">
       <div class="list-group col-xs-12 pt-4">
-      <button type="button" class="list-group-item list-group-item-action bg-warning">
-        Filtres
+      <button type="button" class="list-group-item list-group-item-action bg-warning list-group-general">
+        Filtros
       </button>
-      <a type="button" class="list-group-item list-group-item-action" href="/">Popular</a>
-      <a type="button" class="list-group-item list-group-item-action" href="#">En cartelera</a>
-      <a type="button" class="list-group-item list-group-item-action" href="#">Mejores valoradas</a>
-      <a type="button" class="list-group-item list-group-item-action" href="#">Proximamente</a>
+      <a type="button" class="list-group-item list-group-item-action filtre" id="focus" onclick="filtrar('popular'); getFocus();">Popular <i class="fas fa-fire"></i></a>
+      <a type="button" class="list-group-item list-group-item-action filtre" id="focus" onclick="filtrar('now_playing')">En cartelera <i class="far fa-calendar-alt"></i></a>
+      <a type="button" class="list-group-item list-group-item-action filtre" id="focus" onclick="filtrar('top_rated')">Mejores valoradas <i class="fas fa-thumbs-up"></i></a>
+      <a type="button" class="list-group-item list-group-item-action filtre" id="focus" onclick="filtrar('upcoming')">Próximamente <i class="fas fa-stopwatch"></i></a>
+
       </div>
     </div>
     <div class="col-lg-8 col-xs-12 pb-3">

@@ -202,11 +202,27 @@ body{
 }
 
 
-.list-group-item.active{
-    border:1px solid #F79256;
-    text-align: center;
+.list-group-general{
+    background-color: #ffc107 !important;
+    color: black !important;
+}
+
+
+.a.bg-warning:focus, a.bg-warning:hover, button.bg-warning:focus, button.bg-warning:hover{
+    background-color: #ffc107 !important;
 }
 
 .list-group-item{
     text-align: center;
+}
+
+.filtre:hover{
+    background-color: #F5B041;
+    color: black !important;
+    cursor: pointer;
+    opacity: 1;
+}
+
+#focus:focus,#focus:active{
+    background-color: red;
 }
