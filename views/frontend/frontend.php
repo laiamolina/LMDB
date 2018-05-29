@@ -1,7 +1,7 @@
 <?php require 'views/partials/header.php'; ?>
 <body ng-app="myApp" ng-controller="myCtrl">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">LMDB</a>
+  <a class="navbar-brand" href="/">LMDB</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -49,13 +49,19 @@
         <a type="button" class="list-group-item list-group-item-action filtre" id="focus" ng-click="filter('upcoming')">Próximamente <i class="fas fa-stopwatch"></i></a>
       </div>
     </div>
-    <h1>{{filtre}}</h1>
-   
+
+  
     <div class="col-lg-8 col-xs-12 pb-3">
-    <div id="titol-peli" class="col-lg-6 col-xs-12"></div>
-      <div class="row" id="pelis">
-        
-      </div>
+    <div class="row">
+      <div class="col-lg-12 col-xs-12">
+        <h1 ng-if="filtre == 'popular'">Películas más populares</h1>
+        <h1 ng-if="filtre == 'now_playing'">En cartelera</h1>
+        <h1 ng-if="filtre == 'top_rated'">Mejores valoradas</h1>
+        <h1 ng-if="filtre == 'upcoming'">Próximamente</h1>
+      </div>  
+    </div> 
+    <div class="row" id="pelis">
+    </div>
     </div>
   </div>
 
