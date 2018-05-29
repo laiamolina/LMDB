@@ -1,7 +1,8 @@
 var popu = 'popular';
-var filtre = '';
+var filtre = 'popular';
 var best = 'top_rated';
 var prox = 'upcoming';
+var pagina = 1;
 
 var getMovies = function(url){
   return new Promise (function(resolve, reject) {
@@ -16,7 +17,29 @@ var getMovies = function(url){
   });
 }
 
+function numPag(num){
+  pagina = num;
+  var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=${pagina}`;
+  getMovies(url).then((movies) => {
+    printMovies(movies);
+  })
+}
+function first(){
+  console.log("asdas")
+  pagina = 1;
+  var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=${pagina}`;
+  getMovies(url).then((movies) => {
+    printMovies(movies);
+  })
+}
+function last(){
+  var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=${pagina}`;
+  getMovies(url).then((movies) => {
+    printMovies(movies);
+  })
+}
 function printMovies(movies){
+  console.log("cargando")
   console.log(movies)
   var pelis = '';
   Object(movies.results).forEach(function(peli) {
@@ -52,34 +75,55 @@ function printMovies(movies){
 }
 
 function filtrar(nouFiltre){
+  var titol_peli = ``;
   if(nouFiltre !== filtre){
     switch(nouFiltre){
       case 'upcoming':
           filtre = 'upcoming';
-          var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=1`;
+          titol = 'Próximamente';
+          var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=${pagina}`;
           getMovies(url).then((movies) => {
             printMovies(movies);
+            titol_peli += `
+              <h1>${titol}</h1>
+            `;
+            document.getElementById('titol-peli').innerHTML = titol_peli;
           })
           break;
       case 'popular':
           filtre = 'popular';
-          var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=1`;
+          titol = 'Películas populares';
+          var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=${pagina}`;
           getMovies(url).then((movies) => {
             printMovies(movies);
+            titol_peli += `
+            <h1>${titol}</h1>
+            `;
+            document.getElementById('titol-peli').innerHTML = titol_peli;
           })
           break;
       case 'now_playing':
           filtre = 'now_playing';
-          var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=1`;
+          titol = 'En cartelera';
+          var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=${pagina}`;
           getMovies(url).then((movies) => {
             printMovies(movies);
+            titol_peli += `
+              <h1>${titol}</h1>
+            `;
+            document.getElementById('titol-peli').innerHTML = titol_peli;
           })
           break;
      case 'top_rated':
           filtre = 'top_rated';
-          var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=1`;
+          titol = 'Mejores valoradas';
+          var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=${pagina}`;
           getMovies(url).then((movies) => {
             printMovies(movies);
+            titol_peli += `
+            <h1>${titol}</h1>
+            `;
+            document.getElementById('titol-peli').innerHTML = titol_peli;
           })
           break;
     }
@@ -87,6 +131,3 @@ function filtrar(nouFiltre){
 
 }
 
-function getFocus(){
-  document.getElementById("focus").focus();
-}

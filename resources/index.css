@@ -223,6 +223,24 @@ body{
     opacity: 1;
 }
 
-#focus:focus,#focus:active{
-    background-color: red;
+.mida{
+    font-size: 25px;
+    color: black;
+}
+
+.mida:hover{
+    color: #6C3483;
+}
+
+.lmdb{
+    font-weight: bold;
+}
+
+.paginacio{
+    background-color: orange !important;
+}
+
+.align{
+    display: flex;
+    margin: auto;
 }
