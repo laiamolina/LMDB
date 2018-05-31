@@ -9,7 +9,9 @@ error_reporting(E_ALL);
         "/register" => "views/backend/backendController.php",
         "/backend" => "views/backend/backend.php",
         "/logout" => "actions/logout.php",
-        "/session" => "actions/session.php"
+        "/session" => "actions/session.php",
+        "/usuari" => "views/frontend/frontendUsuari.php",
+        "/info" => "views/frontend/moreInfo.php"
     ];
 
     require($routes[$_SERVER["REQUEST_URI"]]);

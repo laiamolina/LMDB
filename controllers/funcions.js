@@ -63,7 +63,7 @@ function printMovies(movies){
             <p class="text-s">${peli.overview.substr(0,138)}...</p>
             <p class="center">${peli.adult ? `+18` : ``}</p>
             <hr>
-            <a class="moreinfo" href="#"><p class="text-s">Más info</p></a>
+            <a class="moreinfo" href="/info"><p class="text-s">Más info</p></a>
 
         </div>
       </div>   
@@ -74,60 +74,4 @@ function printMovies(movies){
   document.getElementById("pelis").innerHTML = pelis;
 }
 
-function filtrar(nouFiltre){
-  var titol_peli = ``;
-  if(nouFiltre !== filtre){
-    switch(nouFiltre){
-      case 'upcoming':
-          filtre = 'upcoming';
-          titol = 'Próximamente';
-          var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=${pagina}`;
-          getMovies(url).then((movies) => {
-            printMovies(movies);
-            titol_peli += `
-              <h1>${titol}</h1>
-            `;
-            document.getElementById('titol-peli').innerHTML = titol_peli;
-          })
-          break;
-      case 'popular':
-          filtre = 'popular';
-          titol = 'Películas populares';
-          var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=${pagina}`;
-          getMovies(url).then((movies) => {
-            printMovies(movies);
-            titol_peli += `
-            <h1>${titol}</h1>
-            `;
-            document.getElementById('titol-peli').innerHTML = titol_peli;
-          })
-          break;
-      case 'now_playing':
-          filtre = 'now_playing';
-          titol = 'En cartelera';
-          var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=${pagina}`;
-          getMovies(url).then((movies) => {
-            printMovies(movies);
-            titol_peli += `
-              <h1>${titol}</h1>
-            `;
-            document.getElementById('titol-peli').innerHTML = titol_peli;
-          })
-          break;
-     case 'top_rated':
-          filtre = 'top_rated';
-          titol = 'Mejores valoradas';
-          var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=${pagina}`;
-          getMovies(url).then((movies) => {
-            printMovies(movies);
-            titol_peli += `
-            <h1>${titol}</h1>
-            `;
-            document.getElementById('titol-peli').innerHTML = titol_peli;
-          })
-          break;
-    }
-  }
-
-}
 

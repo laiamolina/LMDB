@@ -244,3 +244,30 @@ body{
     display: flex;
     margin: auto;
 }
+
+.info-peli{
+    background-color: aqua;
+}
+
+.img-peli{
+    background-color: blue;
+    height: 450px;
+    width: 300px;
+}
+
+.info-info{
+    height: 608px;
+    background-color: yellow;
+}
+
+.img-info{
+    width: 300px;
+    height: 450px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.col-img{
+    text-align: center;
+    background-color: red;
+}
