@@ -13,6 +13,25 @@ error_reporting(E_ALL);
         "/usuari" => "views/frontend/frontendUsuari.php",
         "/info" => "views/frontend/moreInfo.php"
     ];
+    $params = multiexplode(['?', '&'], $_SERVER["REQUEST_URI"]);
+    
 
-    require($routes[$_SERVER["REQUEST_URI"]]);
+    if(count($params) > 1){
+        foreach($params as $param){
+            $hasParam = strpos('=' , $param);
+            if($hasParam){
+                $param = explode('=', $param);
+                $_GET[$param[0]] = $param[1];
+            } 
+        }
+    }
+
+    require($routes[$params[0]]);
+    function multiexplode ($delimiters,$string) {
+
+        $ready = str_replace($delimiters, $delimiters[0], $string);
+        $launch = explode($delimiters[0], $ready);
+        return  $launch;
+    }
+    
 ?>

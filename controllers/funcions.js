@@ -17,6 +17,22 @@ var getMovies = function(url){
   });
 }
 
+var getMovies = function(url){
+  return new Promise (function(resolve, reject) {
+    fetch(url)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(movies) {
+      if(movies) resolve(movies);
+      else reject("Error");
+    });
+  });
+}
+
+
+
+
 function numPag(num){
   pagina = num;
   var url = `https://api.themoviedb.org/3/movie/${filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=${pagina}`;
@@ -39,7 +55,6 @@ function last(){
   })
 }
 function printMovies(movies){
-  console.log("cargando")
   console.log(movies)
   var pelis = '';
   Object(movies.results).forEach(function(peli) {
@@ -63,8 +78,7 @@ function printMovies(movies){
             <p class="text-s">${peli.overview.substr(0,138)}...</p>
             <p class="center">${peli.adult ? `+18` : ``}</p>
             <hr>
-            <a class="moreinfo" href="/info"><p class="text-s">Más info</p></a>
-
+            <a class="moreinfo" href="/info?id=${peli.id}"><p class="text-s">Más info</p></a>
         </div>
       </div>   
       </div>
@@ -73,5 +87,6 @@ function printMovies(movies){
   });
   document.getElementById("pelis").innerHTML = pelis;
 }
+
 
 
