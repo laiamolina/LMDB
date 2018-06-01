@@ -34,22 +34,29 @@ $v1=$_GET['id'];
     <div class="pare">
         <div class="fill mx-auto" style="background-image: url(https://image.tmdb.org/t/p/w500{{movie.backdrop_path}}); background-repeat: no-repeat; background-size: cover;">
             <div class="fill fill1 mx-auto" style="background-image: radial-gradient(circle at -2% 45%, rgba(239, 124, 6, 0.81) 0%, rgba(152, 26, 26, 0.88) 100%)">
-            <div class="row">
-                    <div class="col-md-4 col-xs-6 ml-auto">
+            <div class="row margin">
+                    <div class="col-md-5 col-xs-12 center">
                          <img class="img-fluid mt-5 img-info" src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}">
+                    <div class="row center">
+                        <div class="col-md-4 mt-3 margin">
+                        <a target="_blank" href="https://www.youtube.com/watch?v={{trailer}}"><i class="fas fa-play-circle play"></i></a>
+
+                        </div>
+            </div>
                     </div>
                     <div class="col-md-6 col-xs-6 mr-auto">
-                        <h1 class="mt-5 text-white">{{movie.title}}</h1> 
+                        <h1 class="mt-5 text-white">{{movie.title}}
+                        <span class="data">({{movie.release_date.substr(0,4)}})</h1>
                         <hr style="background-color:darkred;">
-                        <p class="text-white">Estado: {{movie.status}} Duración: {{movie.runtime}} min</p>
-                        <p class="text-white">Género: {{movie.genres[0].name}}</p>
-                        <h5 class="text-white">Sinopsis</h5>
+                        <p class="text-white genre"> Género: 
+                        <span class="genres" ng-repeat="genre in movie.genres">{{genre.name}}, </span></p>
+                        <p class="text-white genre">Duración: 
+                        <span class="genres">{{movie.runtime}} min</p>
+                        <h5 class="text-white genre">Sinopsis</h5>
                         <p class="text-white">{{movie.overview}}</p>
-                        <p>{{movie.video}}</p>
-                        <p>{{movie.release_date}}</p>
+                            
                     </div>    
             </div>
-            
         </div>
 
     </div>
@@ -62,13 +69,32 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
     var urlParams = new URLSearchParams(window.location.search);
     var id = urlParams.get('id');
+    $scope.trailer='';
+    $scope.fetch_trailer_url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ES`;
     $scope.url = `https://api.themoviedb.org/3/movie/${id}}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ES`;
-    $scope.movie='';    
+    $scope.actor=`https://api.themoviedb.org/3/movie/${id}/person?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ES`;
 
-    
+    $scope.person=``
+    $scope.movie='';   
+    $scope.video=''; 
+  
+
     getMovies($scope.url).then((movie) => {
         $scope.movie = movie;
         console.log(movie);
+        $scope.$apply();
+    })
+
+    getMovies($scope.fetch_trailer_url).then((trailer) =>{
+        $scope.video=trailer;
+        console.log(trailer);
+        $scope.trailer=trailer.results[0].key;
+        $scope.$apply();
+    })
+
+    getMovies($scope.fetch_trailer_url).then((actor) =>{
+        $scope.actor=actor;
+        console.log(actor);
         $scope.$apply();
     })
 

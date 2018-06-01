@@ -287,3 +287,31 @@ body{
 .poster{
     margin-left: 15%;
 }
+
+.genre{
+    font-size: 1.25rem;
+    font-weight:600; 
+}
+
+.genres{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.play{
+    font-size: 40px;
+    color: white;
+}
+
+.play:hover{
+    color: darkred;
+}
+
+.margin{
+    margin: auto;
+}
+
+.data{
+    color: #E6E6E6;
+    font-size: 1.5rem;
+}
