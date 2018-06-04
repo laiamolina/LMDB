@@ -36,7 +36,7 @@ $v1=$_GET['id'];
             <div class="fill fill1 mx-auto" style="background-image: radial-gradient(circle at -2% 45%, rgba(239, 124, 6, 0.81) 0%, rgba(152, 26, 26, 0.88) 100%)">
             <div class="row margin">
                     <div class="col-md-5 col-xs-12 center">
-                         <img class="img-fluid mt-5 img-info" src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}">
+                         <img class="img-fluid mt-5 img-info"style="height:400px;" src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}">
                     <div class="row center">
                         <div class="col-md-4 mt-3 margin">
                         <a target="_blank" href="https://www.youtube.com/watch?v={{trailer}}"><i class="fas fa-play-circle play"></i></a>
@@ -53,10 +53,59 @@ $v1=$_GET['id'];
                         <p class="text-white genre">Duración: 
                         <span class="genres">{{movie.runtime}} min</p>
                         <h5 class="text-white genre">Sinopsis</h5>
-                        <p class="text-white">{{movie.overview}}</p>
-                            
-                    </div>    
+                        <p class="text-white">{{movie.overview}}</p>     
+                    </div>       
             </div>
+        </div>
+
+        <div class="extra">
+            <div class="extra-fill">
+                <div class="row margin">
+                    <div class="col-lg-12 mt-3 center">
+                        <h2>Actores</h2>
+                    </div>
+                </div>
+                    <div class="row margin">
+                        <div class="col-lg-12">
+                            <div class="col-lg-12 col-md-3 col-xs-12 flex">
+                                <div class="cartes">
+                                    <div class="card carta" style="width: 10.5rem;" ng-repeat="actor in actor.cast|limitTo:8">
+                                        <span class="img-fluid"><img class="card-img-top caratulaMoreinfo" src="https://image.tmdb.org/t/p/w300/{{actor.profile_path}}"></img>
+                                        </span>
+                                        <div class="card-body">
+                                            <span><h5> {{actor.name}} </h5></span>
+                                            <span><p> {{actor.character}} </p></span>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>  
+                        </div>    
+                    </div>
+            </div>            
+        </div>
+
+        <div class="reco">
+            <div class="recom">
+                <div class="row margin">
+                    <div class="col-lg-12 mt-5 center">
+                         <h2>Recomendaciones</h2>
+                    </div>
+                </div>    
+                    <div class="row margin">
+                        <div class="col-lg-4">
+                            <div class="col-lg-4 col-md-3 col-xs-12 flex">
+                                <div class="cartes">
+                                    <div class="card carta" style="width: 10.5rem;" ng-repeat="recomenacions in recomenacions.results|limitTo:8">
+                                        <span class="img-fluid"><img class="card-img-top caratulaReco" src="https://image.tmdb.org/t/p/w300/{{recomenacions.poster_path}}"></img>
+                                        </span>
+                                    </div>
+                                    </div>
+                            </div>  
+                        </div>    
+                    </div>
+                </div>
+            
+                
         </div>
 
     </div>
@@ -72,11 +121,13 @@ app.controller('myCtrl', function($scope) {
     $scope.trailer='';
     $scope.fetch_trailer_url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ES`;
     $scope.url = `https://api.themoviedb.org/3/movie/${id}}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ES`;
-    $scope.actor=`https://api.themoviedb.org/3/movie/${id}/person?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ES`;
+    $scope.actor=`https://api.themoviedb.org/3/movie/${id}/credits?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ES`;
+    $scope.recomenacio= `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ES&page=1`;
 
-    $scope.person=``
+    $scope.person='';
     $scope.movie='';   
     $scope.video=''; 
+    $scope.recomenacions='';
   
 
     getMovies($scope.url).then((movie) => {
@@ -92,11 +143,19 @@ app.controller('myCtrl', function($scope) {
         $scope.$apply();
     })
 
-    getMovies($scope.fetch_trailer_url).then((actor) =>{
+    getMovies($scope.actor).then((actor) =>{
         $scope.actor=actor;
         console.log(actor);
         $scope.$apply();
     })
+
+     getMovies($scope.recomenacio).then((reco) =>{
+        $scope.recomenacions=reco;
+        console.log(reco);
+        $scope.$apply();
+    })
+
+    
 
 });
 </script>
