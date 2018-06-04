@@ -11,7 +11,8 @@ error_reporting(E_ALL);
         "/logout" => "actions/logout.php",
         "/session" => "actions/session.php",
         "/usuari" => "views/frontend/frontendUsuari.php",
-        "/info" => "views/frontend/moreInfo.php"
+        "/info" => "views/frontend/moreInfo.php",
+        "/actor" =>"views/frontend/actor.php"
     ];
     $params = multiexplode(['?', '&'], $_SERVER["REQUEST_URI"]);
     

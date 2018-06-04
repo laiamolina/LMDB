@@ -338,10 +338,18 @@ body{
     border: 3px grove darkred;
 }
 
+.llargadaCarta{
+    height: 300px;
+}
+
 .caratulaMoreinfo{
     height: 250px;
 }
 
 .caratulaReco{
     height: 300px;
+}
+
+.imgActor{
+    margin-left: 35%;
 }

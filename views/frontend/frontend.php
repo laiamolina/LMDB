@@ -14,15 +14,6 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Nose</a>
       </li>
-     <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Ranking
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Més buscades</a>
-          <a class="dropdown-item" href="#">Millors valorades</a>
-          <a class="dropdown-item" href="#">Pitjors valorades</a>
-      </li>-->
     </ul>
     <a href="/login" class="btn btn-warning  navright"> 
         <i class="fas fa-user"></i>

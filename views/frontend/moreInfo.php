@@ -13,7 +13,7 @@ $v1=$_GET['id'];
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Pel·lícules <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Pel·lícules <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Nose</a>
@@ -73,7 +73,7 @@ $v1=$_GET['id'];
                                         <span class="img-fluid"><img class="card-img-top caratulaMoreinfo" src="https://image.tmdb.org/t/p/w300/{{actor.profile_path}}"></img>
                                         </span>
                                         <div class="card-body">
-                                            <span><h5> {{actor.name}} </h5></span>
+                                            <span><h5> {{actor.name}}</h5></span>
                                             <span><p> {{actor.character}} </p></span>
                                         </div>
                                     </div>
@@ -93,10 +93,10 @@ $v1=$_GET['id'];
                 </div>    
                     <div class="row margin">
                         <div class="col-lg-4">
-                            <div class="col-lg-4 col-md-3 col-xs-12 flex">
+                            <div class="col-lg-4 col-md-3 col-xs-12 flex mb-5">
                                 <div class="cartes">
                                     <div class="card carta" style="width: 10.5rem;" ng-repeat="recomenacions in recomenacions.results|limitTo:8">
-                                        <span class="img-fluid"><img class="card-img-top caratulaReco" src="https://image.tmdb.org/t/p/w300/{{recomenacions.poster_path}}"></img>
+                                        <span class="img-fluid"><a href="/info?id={{recomenacions.id}}"><img class="card-img-top caratulaReco" src="https://image.tmdb.org/t/p/w300/{{recomenacions.poster_path}}"></a></img>
                                         </span>
                                     </div>
                                     </div>
@@ -138,7 +138,6 @@ app.controller('myCtrl', function($scope) {
 
     getMovies($scope.fetch_trailer_url).then((trailer) =>{
         $scope.video=trailer;
-        console.log(trailer);
         $scope.trailer=trailer.results[0].key;
         $scope.$apply();
     })
@@ -151,11 +150,8 @@ app.controller('myCtrl', function($scope) {
 
      getMovies($scope.recomenacio).then((reco) =>{
         $scope.recomenacions=reco;
-        console.log(reco);
         $scope.$apply();
     })
-
-    
 
 });
 </script>
