@@ -1,3 +1,6 @@
+<?php
+    require('./actions/session.php');
+?>
 <?php require 'views/partials/header.php'; ?>
 <body ng-app="myApp" ng-controller="myCtrl">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -12,7 +15,7 @@
         <a class="nav-link" href="#">Pel·lícules <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Nose</a>
+        <a class="nav-link" href="#">Categorias</a>
       </li>
     </ul>
     <a href="/login" class="btn btn-warning  navright"> 
@@ -50,6 +53,7 @@
         <h1 ng-if="filtre == 'upcoming'">Próximamente</h1>
       </div>  
     </div> 
+
     <div class="row" id="pelis">
     <div class="col-lg-6 col-md-6 col-xs-1 pb-3" ng-repeat="movie in movies.results" ng-if="movie.overview" >
         <div class="row margin boto">
@@ -110,91 +114,9 @@
 </nav>
   
 </div>
-<footer class="page-footer font-small unique-color-dark mt-4">
 
-  <div style="background-color: #F5B041;">
-    <div class="container">
-      <div class="row py-4 d-flex align-items-center">
 
-        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-          <h6 class="mb-0">Síguenos en nuestras redes para estar al corriente de todo!</h6>
-        </div>
-      
-        <div class="col-md-6 col-lg-7 text-center text-md-right">
-          <a href="https://www.facebook.com">
-
-            <i class="fab fa-facebook-square mr-4 mida"></i>
-          </a>
-    
-          <a href="https://www.twitter.com">
-            <i class="fab fa-twitter-square mr-4 mida"></i>
-          </a>
-          
-          <a  href="https://plus.google.com/discover">
-            <i class="fab fa-google-plus-square mr-4 mida"></i>
-          </a>
-       
-          <a href="https://www.instagram.com">
-             <i class="fab fa-instagram mida"></i>
-          </a>
-
-        </div>
-       
-      </div>
-    
-
-    </div>
-  </div>
-
-  <div class="container text-center text-md-left mt-5">
-
-    <div class="row mt-3">
-      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-        <h6 class="text-uppercase font-weight-bold">LMDB</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>En esta página web vas a encontrar lo último en películas. También podras tener tu lista de películas favoritas! Registrate y disfruta!</p>
-        <img src="/img/LMDB.png" style="width:136px; height:143px;">
-
-      </div>
-
-      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-        <h6 class="text-uppercase font-weight-bold">Usuario</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <a href="/login">Iniciar sesión</a>
-        </p>
-        <p>
-          <a href="/register">Regístrate</a>
-        </p>
-        <p>
-
-      </div>
-    
-      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
-        <h6 class="text-uppercase font-weight-bold">Contacto</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <i class="fa fa-home mr-3"></i> Carrer del Dr.Roux, 08017, Barcelona</p>
-        <p>
-          <i class="fa fa-envelope mr-3"></i> lmdb@gmail.com</p>
-        <p>
-          <i class="fa fa-phone mr-3"></i> + 34 123 567 060</p>
-        <p>
-          <i class="fa fa-print mr-3"></i> + 01 765 456 344</p>
-
-      </div>
-
-    </div>
-
-  </div>
- 
-  <div class="footer-copyright text-center py-3">© 2018 Copyright:
-    <a class="lmdb"> LMDB</a>
-  </div>
-
-</footer>
+  
 <?php require 'views/partials/footer.php'; ?>
 <script>
 var app = angular.module('myApp', []);
@@ -216,6 +138,14 @@ app.controller('myCtrl', function($scope) {
   $scope.numPagines = 0;
   $scope.url = `https://api.themoviedb.org/3/movie/${$scope.filtre}?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ESP&page=${$scope.pagina}`;
   $scope.movies='';
+  $scope.category = `https://api.themoviedb.org/3/genre/movie/list?api_key=1c104b303dc877c992ec8975a7ccb2e5&language=es-ES`;
+  $scope.categories='';
+
+    getter($scope.category).then((cat) =>{
+        $scope.categories=cat;
+        console.log(cat);
+        $scope.$apply();
+    })
 
   getter($scope.url).then((movies) => {
     $scope.numPagines = movies.total_pages;
@@ -274,6 +204,7 @@ app.controller('myCtrl', function($scope) {
       $scope.$apply();
     });
   }
+  
 
 
 });

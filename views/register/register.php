@@ -14,9 +14,6 @@
           <?php endif; ?> 
         <input id="login_username" type="text" class="form-control" name="username" placeholder="Nom Usuari" required="" autofocus="" /><br>
         <input id="login_password" type="password" class="form-control" name="password" placeholder="Contrasenya" required=""/>      
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Recorda'm
-        </label>
         <button class="btn btn-lg btn-block boto" type="submit">Registrarse</button>
       </form>
     </div>

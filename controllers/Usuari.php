@@ -56,7 +56,7 @@ class Usuari{
                 return true;
             } 
         } return false;   
-    }
+    }   
 
 }
 

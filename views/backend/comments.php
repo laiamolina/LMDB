@@ -1,8 +1,5 @@
 <?php require 'views/partials/header.php';?>
 <?php
-    require('./actions/session.php');
-?>
-<?php
 $v1 = $_GET['id'];
 ?>
 
@@ -111,6 +108,64 @@ $v1 = $_GET['id'];
                     </div>
                 </div>
         </div>
+
+          <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Nom</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Laia">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Cognom</label>
+          <input type="password" class="form-control" id="inputPassword4" placeholder="Molina">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Adreça</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="ausies March S/N">
+      </div>
+      <div class="form-group">
+        <label for="inputAddress2">Address 2</label>
+        <input type="text" class="form-control" id="inputAddress2" placeholder="Línia adicional">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">Ciutat</label>
+          <input type="text" class="form-control" id="inputCity" placeholder="Torelló">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">Estudis Superats</label>
+          <select id="inputState" class="form-control">
+            <option selected>Tria una opció</option>
+            <option>...</option>
+          </select>
+        </div>
+       <div class="form-group col-md-4">
+            <label for="inputState">Cicle del qual demanes info</label>
+            <select id="inputState" class="form-control">
+                <option selected>Tria una opció.</option>
+                <option>...</option>
+            </select>
+        </div>
+          
+          <div class="col-md-12">
+          <label for="inputState">Comentaris</label>
+          <input type="text" class="form-control">    
+        </div>
+          
+      </div>
+      
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck">
+          <label class="form-check-label" for="gridCheck">
+            Accepto LOPD
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+    
         
     </div>
 </div>
