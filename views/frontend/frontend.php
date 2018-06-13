@@ -9,10 +9,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Pel·lícules <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Nose</a>
+        <a class="nav-link" href="#">Películas <span class="sr-only">(current)</span></a>
       </li>
     </ul>
     <a href="/login" class="btn btn-warning  navright"> 
@@ -22,7 +19,7 @@
 </nav>
 
 <form class="form-inline my-4 my-lg-0">
-<input class="form-control mr-sm-4 cercador" type="search"  placeholder="Cerca" ng-change="cerca(nom)" ng-model="nom" aria-label="Search">   
+<input class="form-control mr-sm-4 cercador" type="search"  placeholder="Busca..." ng-change="cerca(nom)" ng-model="nom" aria-label="Search">   
 </form>
 
 
@@ -220,6 +217,7 @@ app.controller('myCtrl', function($scope) {
   getter($scope.url).then((movies) => {
     $scope.numPagines = movies.total_pages;
     $scope.movies = movies;
+    console.log(movies);
     $scope.$apply();
   })
 

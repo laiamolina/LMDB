@@ -1,7 +1,5 @@
 <?php require 'views/partials/header.php';?>
-<?php
-    require('./actions/session.php');
-?>
+
 <?php
 $v1 = $_GET['id'];
 ?>
