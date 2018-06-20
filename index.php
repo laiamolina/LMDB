@@ -13,7 +13,8 @@ error_reporting(E_ALL);
         "/usuari" => "views/frontend/frontendUsuari.php",
         "/info" => "views/frontend/moreInfo.php",
         "/category" => "views/backend/categorias.php",
-        "/comment" => "views/backend/comments.php"
+        "/comment" => "views/backend/comments.php",
+        "/politica" => "views/register/politica.php"
 
     ];
     $params = multiexplode(['?', '&'], $_SERVER["REQUEST_URI"]);

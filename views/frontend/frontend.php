@@ -9,7 +9,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Películas <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Películas <span class="sr-only">(current)</span></a>
       </li>
     </ul>
     <a href="/login" class="btn btn-warning  navright"> 
@@ -60,7 +60,7 @@
 
           </div>
           <div class="col-lg-6 col-md-6 col-xs-6">
-            <p class="titol">{{movie.title}}</p>
+            <p class="peli">{{movie.title}}</p>
             <p class="date">Estreno: {{movie.release_date}}</p>
             <hr>          
             <p class="text-s">{{movie.overview.substr(0,138)}}...</p>
@@ -218,6 +218,7 @@ app.controller('myCtrl', function($scope) {
     $scope.numPagines = movies.total_pages;
     $scope.movies = movies;
     console.log(movies);
+    console.log(movies.title);
     $scope.$apply();
   })
 

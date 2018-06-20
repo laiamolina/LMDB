@@ -18,15 +18,6 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Pel·lícules</a>
       </li>
-      <!--<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Ranking
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Més buscades</a>
-          <a class="dropdown-item" href="#">Millors valorades</a>
-          <a class="dropdown-item" href="#">Pitjors valorades</a>
-      </li>-->
     </ul>
     <li class="nav-item dropdown move">
         <a class="nav-link dropdown-toggle btn btn-warning boto_user move" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,7 +72,7 @@
 
           </div>
           <div class="col-lg-6 col-md-6 col-xs-6">
-            <p class="titol">{{movie.title}}</p>
+            <p class="peli">{{movie.title}}</p>
             <p class="date">Estreno: {{movie.release_date}}</p>
             <hr>          
             <p class="text-s">{{movie.overview.substr(0,138)}}...</p>

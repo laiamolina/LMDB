@@ -7,6 +7,7 @@ require("./config.php");
 class Usuari{
     protected static $redirectOnBackend = "/backend";
     protected static $redirectOnLogin = "/login";
+    protected static $redirectPolitic= "/politica";
 
     static public function login($nom, $password){
     
@@ -26,18 +27,25 @@ class Usuari{
         }
     }
 
-    static public function register($nom,$password){
+    static public function register($nom,$password,$password2,$email){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             global $db;
             $myusername = mysqli_real_escape_string($db,$nom);
             $mypassword = mysqli_real_escape_string($db,$password);
+            $mypassword2 = mysqli_real_escape_string($db,$password2);
+            $myemail= mysqli_real_escape_string($db,$email);
+
+            $pass=password_hash($mypassword,PASSWORD_DEFAULT);
+            $pass2= password_hash($mypassword2,PASSWORD_DEFAULT);
+
 
             if(!self::existeix($myusername)){
-                $sql="INSERT INTO users (name,password) VALUES ('$myusername', '$mypassword')";
+                $sql="INSERT INTO users (name,password,password2,email) VALUES ('$myusername', '$pass', '$pass2', '$myemail')";
+                //die($sql);
                 $result = mysqli_query($db,$sql) or die("register error");
-
+                
                 if($result){
-                    header("Location: " . self::$redirectOnLogin);
+                    header("Location: " . self::$redirectPolitic);
                 } else echo "Error de redirecció";
             }
         }
@@ -56,7 +64,25 @@ class Usuari{
                 return true;
             } 
         } return false;   
-    }   
+    }
 
+    static public function securityPassword($password,$password2){
+        die('111');
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            global $db;
+            $mypassword = mysqli_real_escape_string($db,$password);
+            $mypassword2 = mysqli_real_escape_string($db,$password2);
+
+            $pass=password_hash($mypassword,DEFAULT_PASSWORD);
+            $pass2=password_hash($mypassword2,DEFAULT_PASSWORD);
+
+            if($pass==$pass2){
+                echo 'contras iguals';
+                return true;
+            }
+            
+        } return false;   
+    }
+    
 }
 

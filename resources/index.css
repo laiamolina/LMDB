@@ -42,6 +42,13 @@
     color: white;
 }
 
+.peli{
+    text-align: center;
+    font-weight: bold;
+    font-size: 17px;
+    margin-top: 5%;
+    color: black;
+}
 .linia{
     background-color: white;
     width: 30%;
@@ -352,4 +359,12 @@ body{
 
 .imgActor{
     margin-left: 35%;
+}
+
+.politica{
+    width: 35%;
+    height: 400px;
+    background-image: radial-gradient(circle at 20% 50%, rgba(74, 13, 3, 0.98) 0%, #61360a 100%);
+    margin:auto;
+    text-align: center;
 }
